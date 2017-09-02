@@ -16,13 +16,10 @@ public class triangleChecker {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		// distance formula
-		// sqrt( (x2 - x1)^2 + (y2 - y1)^2 )
-			
+		
 		double pointAx = 0, pointBx = 0, pointCx = 0;
 		double pointAy = 0, pointBy = 0, pointCy = 0;
 		double edgeAB = 0, edgeAC = 0, edgeBC = 0;
-		// TODO Auto-generated method stub
 
 		Point2D.Double pointA = new Point2D.Double(pointAx, pointAy);
 		Point2D.Double pointB = new Point2D.Double(pointBx, pointBy);
@@ -44,7 +41,25 @@ public class triangleChecker {
 		edgeAB = pointA.distance(pointB);
 		edgeAC = pointA.distance(pointC);
 		edgeBC = pointB.distance(pointC);
+		boolean straightLine = pointAx == pointBx && pointAx == pointCx; // x axis
+		boolean straightLine2 = pointAy == pointBy && pointAy == pointCy; // y axis
+		
+		if(edgeAB + edgeAC > edgeBC && !straightLine && !straightLine2){
+			System.out.println("is a triangle because edgeAB " + edgeAB
+					+ " edgeAC " + edgeAC + " is greater than edgeBC "
+					+ edgeBC);
+		} else if (edgeAB + edgeBC > edgeAC && !straightLine && !straightLine2){
+			System.out.println("is a triangle because edgeAB " + edgeAB
+					+ " edgeBC " + edgeBC + " is greater than edgeAC " 
+					+ edgeAC);
+		} else if (edgeAC + edgeBC > edgeAB && !straightLine && !straightLine2){
+			System.out.println("is a triangle because edgeAC " + edgeAC
+					+ " edgeBC " + edgeBC + " is greater than edgeAB " 
+					+ edgeAB);
+		} else {
+			System.out.println("is not a triangle.");
+		}
+		
 		input.close();
 	}
-
 }
