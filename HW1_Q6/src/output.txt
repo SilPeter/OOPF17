@@ -1,0 +1,29 @@
+Enter the x and y coordinates of circle 1: 
+0 0
+Enter the radius of circle 1: 
+5
+Enter the x and y coordinates of circle 2: 
+0 4
+Enter the radius of circle 2: 
+1
+Circles completely overlap each other.
+
+Enter the x and y coordinates of circle 1: 
+0 0
+Enter the radius of circle 1: 
+5
+Enter the x and y coordinates of circle 2: 
+0 4
+Enter the radius of circle 2: 
+2
+Circles overlaps.
+
+Enter the x and y coordinates of circle 1: 
+0 0
+Enter the radius of circle 1: 
+5
+Enter the x and y coordinates of circle 2: 
+0 6
+Enter the radius of circle 2: 
+.5
+Circles don't overlap.

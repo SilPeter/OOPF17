@@ -1,0 +1,23 @@
+Insert x and y coordinates for point A: 
+0 0
+Insert x and y coordinates for point B: 
+10 0
+Insert x and y coordinates for point C: 
+0 10
+is a triangle because edgeAB 10.0 edgeAC 10.0 is greater than edgeBC 14.142135623730951
+
+Insert x and y coordinates for point A: 
+0 0
+Insert x and y coordinates for point B: 
+0 10
+Insert x and y coordinates for point C: 
+0 -10
+is not a triangle.
+
+Insert x and y coordinates for point A: 
+5 0
+Insert x and y coordinates for point B: 
+0 5
+Insert x and y coordinates for point C: 
+10 10
+is a triangle because edgeAB 7.0710678118654755 edgeAC 11.180339887498949 is greater than edgeBC 11.180339887498949
