@@ -6,8 +6,8 @@ public class pascalsTriangle{
     public static void main(String args[]){
         Scanner input = new Scanner(System.in);
         System.out.println("Height of the pyramid? ");
-        //int height = input.nextInt();
-        printer(4);
+        int height = input.nextInt();
+        printer(height);
 
         input.close();
     }
