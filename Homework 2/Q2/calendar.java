@@ -35,7 +35,7 @@ public class calendar{
         cal.set(year, 0, firstDayOfJan);
         //System.out.println("What year and day does the first of January fall on?");
         System.out.println(mindaysfirstweek);
-        System.out.printf("Now is %5d%5d%5d", year, month, day);  // Pad with zero
+        System.out.printf("%5d%5d%5d", year, month, day); 
 
         System.out.println(cal.get(Calendar.MONTH));
 

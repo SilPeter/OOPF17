@@ -1,0 +1,11 @@
+C:\Users\peter\Documents\GitHub\OOPF17\Homework 2\Q3>java isPalindrome
+tes
+false
+test
+false
+testset
+true
+cisc3150
+false
+cisc3150513csic
+true
