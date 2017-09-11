@@ -26,17 +26,17 @@ public class calendar{
         // to do switch statements
         String monthName = "";
         switch(month){
-            case 0: monthName = "January";
-            case 1: monthName = "February";
-            case 2: monthName = "March";
-            case 3: monthName = "April";
-            case 4: monthName = "May";
-            case 5: monthName = "June";
-            case 6: monthName = "July";
-            case 7: monthName = "August";
-            case 8: monthName = "September";
-            case 9: monthName = "October";
-            case 10: monthName = "November";
+            case 0: monthName = "January"; break;
+            case 1: monthName = "February"; break;
+            case 2: monthName = "March"; break;
+            case 3: monthName = "April"; break;
+            case 4: monthName = "May"; break; 
+            case 5: monthName = "June"; break;
+            case 6: monthName = "July"; break;
+            case 7: monthName = "August"; break;
+            case 8: monthName = "September"; break;
+            case 9: monthName = "October"; break;
+            case 10: monthName = "November"; break;
             case 11: monthName = "December";
         }
         return monthName;
@@ -46,11 +46,30 @@ public class calendar{
         System.out.printf("%10s%8d\n", monthNumberToString(month), year);
         System.out.println("Su Mo Tu We Th Fr Sa");
     }
+    public static int daysGenerator(int month){
+        // http://lifehacker.com/232828/macgyver-tip-use-your-knuckles-to-remember-each-months-days
+        if (month % 2 == 1 && month > 0 && month != 2){
+            return 31;
+        }
+        if (month % 2 == 0 && month > 0 && month != 2){
+            return 30;
+        }
+        return -1;
+    }
+    public static void twelveMonths(int month, int year){
+        for(int i = 0; i < 12; i++){
+            header(i, year);
+            daysGenerator(month);
+        }
+    }
     public static void main(String args[]){
         Scanner input = new Scanner(System.in); 
-        int year = 2012; // input.nextInt();
-        int month = 0; // input.nextInt();
-        header(month, year);
+        System.out.println("Enter year and what day the first January fell on(1-7, 1 being sunday and 7 being saturday: ");
+        int year = 2016; // input.nextInt();
+        int firstDayOfJan = 6; // input.nextInt() - 1;
+        // 1 sunday
+        // 7 saturday
+        twelveMonths(month, year);
 /*
         int firstDayOfJan = 6; // friday
         //int year = cal.get(Calendar.YEAR);
