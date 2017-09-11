@@ -63,7 +63,28 @@ public class calendar{
         System.out.println();
     }
 
-    
+    public static boolean amIALeapYear(int year){
+        // https://support.microsoft.com/en-us/help/214019/method-to-determine-whether-a-year-is-a-leap-year
+        /*
+            How to determine whether a year is a leap year
+    To determine whether a year is a leap year, follow these steps: 
+1    If the year is evenly divisible by 4, go to step 2. Otherwise, go to step 5.
+2    If the year is evenly divisible by 100, go to step 3. Otherwise, go to step 4.
+3    If the year is evenly divisible by 400, go to step 4. Otherwise, go to step 5.
+4    The year is a leap year (it has 366 days).
+5    The year is not a leap year (it has 365 days).
+        */
+        if(year % 4 == 0){
+            if(year % 100 == 0){
+                if(year % 400 == 0){
+                    return true;
+                }
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
     public static int daysMaker(int month){
         // determine the amount of days in a month
         // http://lifehacker.com/232828/macgyver-tip-use-your-knuckles-to-remember-each-months-days
@@ -73,7 +94,14 @@ public class calendar{
         if (month % 2 == 0 && month > 0 && month != 2){
             return 30;
         }
-        System.out.println("returning 1");
+        if (month == 2){
+            if(amIALeapYear(month)){
+                return 29;
+            } else {
+                return 28;
+            }
+        }
+        //System.out.println("returning 1");
         return -1;
     }
     public static void twelveMonths(int firstDayOfJan, int year){
