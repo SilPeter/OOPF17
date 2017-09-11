@@ -43,21 +43,22 @@ public class calendar{
     }
     public static void header(int month, int year){
         // prints header for each month
-        System.out.printf("%10s%8d\n", monthNumberToString(month), year);
-        System.out.println("Su Mo Tu We Th Fr Sa");
+        System.out.printf("%15s%10d\n", monthNumberToString(month), year);
+        System.out.printf("%28s\n", "Su  Mo  Tu  We  Th  Fr  Sa");
+        
     }
     public static void daysPrinter(int month, int year, int firstDayOfJan){
         // prints days formatted to align with header
         for(int i = 0; i < firstDayOfJan; i++){
             // space it out until first day
-            System.out.print(" ");
+            System.out.printf("    ");
         }
 
-        for(int i = 1; i <= daysMaker(month); i++){
+        for(int i = 1; i <= daysMaker(month, year); i++){
             // days
-            System.out.print(i + " ");
-            if(daysMaker(month) + i == 7){
-                System.out.println("seven lines");
+            System.out.printf("%4d", i);
+            if((firstDayOfJan + i) % 7 == 0){
+                System.out.println();
             }
         }
         System.out.println();
@@ -85,7 +86,7 @@ public class calendar{
         }
         return false;
     }
-    public static int daysMaker(int month){
+    public static int daysMaker(int month, int year){
         // determine the amount of days in a month
         // http://lifehacker.com/232828/macgyver-tip-use-your-knuckles-to-remember-each-months-days
         if (month % 2 == 1 && month > 0 && month != 2){
@@ -95,14 +96,14 @@ public class calendar{
             return 30;
         }
         if (month == 2){
-            if(amIALeapYear(month)){
+            if(amIALeapYear(year)){
                 return 29;
             } else {
                 return 28;
             }
         }
         //System.out.println("returning 1");
-        return -1;
+        return 0;
     }
     public static void twelveMonths(int firstDayOfJan, int year){
         // repeats printing 12x
