@@ -42,11 +42,30 @@ public class calendar{
         return monthName;
     }
     public static void header(int month, int year){
-
+        // prints header for each month
         System.out.printf("%10s%8d\n", monthNumberToString(month), year);
         System.out.println("Su Mo Tu We Th Fr Sa");
     }
-    public static int daysGenerator(int month){
+    public static void daysPrinter(int month, int year, int firstDayOfJan){
+        // prints days formatted to align with header
+        for(int i = 0; i < firstDayOfJan; i++){
+            // space it out until first day
+            System.out.print(" ");
+        }
+
+        for(int i = 1; i <= daysMaker(month); i++){
+            // days
+            System.out.print(i + " ");
+            if(daysMaker(month) + i == 7){
+                System.out.println("seven lines");
+            }
+        }
+        System.out.println();
+    }
+
+    
+    public static int daysMaker(int month){
+        // determine the amount of days in a month
         // http://lifehacker.com/232828/macgyver-tip-use-your-knuckles-to-remember-each-months-days
         if (month % 2 == 1 && month > 0 && month != 2){
             return 31;
@@ -54,12 +73,14 @@ public class calendar{
         if (month % 2 == 0 && month > 0 && month != 2){
             return 30;
         }
+        System.out.println("returning 1");
         return -1;
     }
-    public static void twelveMonths(int month, int year){
+    public static void twelveMonths(int firstDayOfJan, int year){
+        // repeats printing 12x
         for(int i = 0; i < 12; i++){
             header(i, year);
-            daysGenerator(month);
+            daysPrinter(i, year, firstDayOfJan);
         }
     }
     public static void main(String args[]){
@@ -69,22 +90,8 @@ public class calendar{
         int firstDayOfJan = 6; // input.nextInt() - 1;
         // 1 sunday
         // 7 saturday
-        twelveMonths(month, year);
-/*
-        int firstDayOfJan = 6; // friday
-        //int year = cal.get(Calendar.YEAR);
+        twelveMonths(firstDayOfJan, year);
 
-        //int month = cal.get(Calendar.MONTH); // 0 - 11
-       // int day = cal.get(Calendar.DAY_OF_MONTH); // 1 - 7
-        cal.setMinimalDaysInFirstWeek(6);
-        int mindaysfirstweek = cal.getMinimalDaysInFirstWeek();
-        cal.set(year, 0, firstDayOfJan);
-        //System.out.println("What year and day does the first of January fall on?");
-        System.out.println(mindaysfirstweek);
-        System.out.printf("%5d%5d%5d", year, month, day); 
-        System.out.println("month  is : " + month);
-        System.out.println(cal.get(Calendar.MONTH));
-*/
         input.close();
     }
 
