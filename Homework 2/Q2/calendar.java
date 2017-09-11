@@ -26,18 +26,18 @@ public class calendar{
         // to do switch statements
         String monthName = "";
         switch(month){
-            case 0: monthName = "January"; break;
-            case 1: monthName = "February"; break;
-            case 2: monthName = "March"; break;
-            case 3: monthName = "April"; break;
-            case 4: monthName = "May"; break; 
-            case 5: monthName = "June"; break;
-            case 6: monthName = "July"; break;
-            case 7: monthName = "August"; break;
-            case 8: monthName = "September"; break;
-            case 9: monthName = "October"; break;
-            case 10: monthName = "November"; break;
-            case 11: monthName = "December";
+            case 1: monthName = "January"; break;
+            case 2: monthName = "February"; break;
+            case 3: monthName = "March"; break;
+            case 4: monthName = "April"; break;
+            case 5: monthName = "May"; break; 
+            case 6: monthName = "June"; break;
+            case 7: monthName = "July"; break;
+            case 8: monthName = "August"; break;
+            case 9: monthName = "September"; break;
+            case 10: monthName = "October"; break;
+            case 11: monthName = "November"; break;
+            case 12: monthName = "December";
         }
         return monthName;
     }
@@ -78,7 +78,7 @@ public class calendar{
     }
     public static void twelveMonths(int firstDayOfJan, int year){
         // repeats printing 12x
-        for(int i = 0; i < 12; i++){
+        for(int i = 0; i <= 12; i++){
             header(i, year);
             daysPrinter(i, year, firstDayOfJan);
         }
@@ -87,7 +87,7 @@ public class calendar{
         Scanner input = new Scanner(System.in); 
         System.out.println("Enter year and what day the first January fell on(1-7, 1 being sunday and 7 being saturday: ");
         int year = 2016; // input.nextInt();
-        int firstDayOfJan = 6; // input.nextInt() - 1;
+        int firstDayOfJan = 6; // input.nextInt();
         // 1 sunday
         // 7 saturday
         twelveMonths(firstDayOfJan, year);
