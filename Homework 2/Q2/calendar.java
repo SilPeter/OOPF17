@@ -47,22 +47,6 @@ public class calendar{
         System.out.printf("%28s\n", "Su  Mo  Tu  We  Th  Fr  Sa");
         
     }
-    public static void daysPrinter(int month, int year, int firstDayOfJan){
-        // prints days formatted to align with header
-        for(int i = 0; i < firstDayOfJan; i++){
-            // space it out until first day
-            System.out.printf("    ");
-        }
-
-        for(int i = 1; i <= daysMaker(month, year); i++){
-            // days
-            System.out.printf("%4d", i);
-            if((firstDayOfJan + i) % 7 == 0){
-                System.out.println();
-            }
-        }
-        System.out.println();
-    }
 
     public static boolean amIALeapYear(int year){
         // https://support.microsoft.com/en-us/help/214019/method-to-determine-whether-a-year-is-a-leap-year
@@ -105,8 +89,26 @@ public class calendar{
         //System.out.println("returning 1");
         return 0;
     }
+
+    public static void daysPrinter(int month, int year, int firstDayOfJan){
+        // prints days formatted to align with header
+        for(int i = 0; i < firstDayOfJan; i++){
+            // space it out until first day
+            System.out.printf("    ");
+        }
+
+        for(int i = 1; i <= daysMaker(month, year); i++){
+            // days
+            System.out.printf("%4d", i);
+            if((firstDayOfJan + i) % 7 == 0){
+                System.out.println();
+            }
+        }
+        System.out.println();
+    }
     public static void twelveMonths(int firstDayOfJan, int year){
         // repeats printing 12x
+        int position = firstDayOfJan;
         for(int i = 0; i <= 12; i++){
             header(i, year);
             daysPrinter(i, year, firstDayOfJan);
@@ -115,8 +117,8 @@ public class calendar{
     public static void main(String args[]){
         Scanner input = new Scanner(System.in); 
         System.out.println("Enter year and what day the first January fell on(1-7, 1 being sunday and 7 being saturday: ");
-        int year = 2016; // input.nextInt();
-        int firstDayOfJan = 6; // input.nextInt();
+        int year = input.nextInt();
+        int firstDayOfJan = input.nextInt() - 1;
         // 1 sunday
         // 7 saturday
         twelveMonths(firstDayOfJan, year);
