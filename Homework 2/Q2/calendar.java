@@ -73,13 +73,13 @@ public class calendar{
     public static int daysMaker(int month, int year){
         // determine the amount of days in a month
         // http://lifehacker.com/232828/macgyver-tip-use-your-knuckles-to-remember-each-months-days
-        if (month % 2 == 1 && month >= 0 && month != 2){
+        if (month % 2 == 1 && month >= 0 && month != 1){
             return 31;
         }
-        if (month % 2 == 0 && month >= 0 && month != 2){
+        if (month % 2 == 0 && month >= 0 && month != 1){
             return 30;
         }
-        if (month == 2){
+        if (month == 1){
             if(amIALeapYear(year)){
                 return 29;
             } else {
