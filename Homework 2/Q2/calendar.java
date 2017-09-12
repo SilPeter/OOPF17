@@ -26,18 +26,18 @@ public class calendar{
         // to do switch statements
         String monthName = "";
         switch(month){
-            case 1: monthName = "January"; break;
-            case 2: monthName = "February"; break;
-            case 3: monthName = "March"; break;
-            case 4: monthName = "April"; break;
-            case 5: monthName = "May"; break; 
-            case 6: monthName = "June"; break;
-            case 7: monthName = "July"; break;
-            case 8: monthName = "August"; break;
-            case 9: monthName = "September"; break;
-            case 10: monthName = "October"; break;
-            case 11: monthName = "November"; break;
-            case 12: monthName = "December";
+            case 0: monthName = "January"; break;
+            case 1: monthName = "February"; break;
+            case 2: monthName = "March"; break;
+            case 3: monthName = "April"; break;
+            case 4: monthName = "May"; break; 
+            case 5: monthName = "June"; break;
+            case 6: monthName = "July"; break;
+            case 7: monthName = "August"; break;
+            case 8: monthName = "September"; break;
+            case 9: monthName = "October"; break;
+            case 10: monthName = "November"; break;
+            case 11: monthName = "December";
         }
         return monthName;
     }
@@ -73,10 +73,10 @@ public class calendar{
     public static int daysMaker(int month, int year){
         // determine the amount of days in a month
         // http://lifehacker.com/232828/macgyver-tip-use-your-knuckles-to-remember-each-months-days
-        if (month % 2 == 1 && month > 0 && month != 2){
+        if (month % 2 == 1 && month >= 0 && month != 2){
             return 31;
         }
-        if (month % 2 == 0 && month > 0 && month != 2){
+        if (month % 2 == 0 && month >= 0 && month != 2){
             return 30;
         }
         if (month == 2){
@@ -90,17 +90,17 @@ public class calendar{
         return 0;
     }
 
-    public static void daysPrinter(int month, int year, int firstDayOfJan){
+    public static void daysPrinter(int month, int year, int firstDayOfMonth){
         // prints days formatted to align with header
-        for(int i = 0; i < firstDayOfJan; i++){
+        for(int i = 0; i < firstDayOfMonth; i++){
             // space it out until first day
             System.out.printf("    ");
         }
 
         for(int i = 1; i <= daysMaker(month, year); i++){
-            // days
+            // prints days and new line if over 7 days
             System.out.printf("%4d", i);
-            if((firstDayOfJan + i) % 7 == 0){
+            if((firstDayOfMonth + i) % 7 == 0){
                 System.out.println();
             }
         }
@@ -108,21 +108,42 @@ public class calendar{
     }
     public static void twelveMonths(int firstDayOfJan, int year){
         // repeats printing 12x
-        int position = firstDayOfJan;
-        for(int i = 0; i <= 12; i++){
+
+        int position = 0;
+        for(int i = 0; i < 12; i++){
+            position = firstDayOfMonth(i, year);
             header(i, year);
-            daysPrinter(i, year, firstDayOfJan);
+            daysPrinter(i, year, position);
         }
+        
+    }
+    public static int firstDayOfMonth(int month, int year){
+        // https://docs.oracle.com/javase/8/docs/api/java/util/Calendar.html#DAY_OF_WEEK
+        // https://stackoverflow.com/questions/18333099/how-to-find-which-day-of-the-week-it-is-java
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, year);
+        cal.set(Calendar.DAY_OF_MONTH, 1);
+        cal.set(Calendar.MONTH, month);
+        int switcher = cal.get(Calendar.DAY_OF_WEEK);
+        switch(switcher){
+            case 1: return 0; 
+            case 2: return 1; 
+            case 3: return 2; 
+            case 4: return 3; 
+            case 5: return 4; 
+            case 6: return 5;
+            case 7: return 6;
+        }
+        return 0;
     }
     public static void main(String args[]){
         Scanner input = new Scanner(System.in); 
-        System.out.println("Enter year and what day the first January fell on(1-7, 1 being sunday and 7 being saturday: ");
+        System.out.println("Enter year and what day the first January fell on(0-6, 0 being sunday and 6 being saturday: ");
         int year = input.nextInt();
-        int firstDayOfJan = input.nextInt() - 1;
-        // 1 sunday
-        // 7 saturday
-        twelveMonths(firstDayOfJan, year);
-
+        int firstDayOfJan = input.nextInt();
+        // 0 sunday
+        // 6 saturday
+        twelveMonths(firstDayOfJan , year);
         input.close();
     }
 
