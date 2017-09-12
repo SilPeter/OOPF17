@@ -1,0 +1,9 @@
+C:\Users\peter\Documents\GitHub\OOPF17\Homework 2\Q5>java commaDelimiter > output.txt
+hello world, cisc3150, good bye world,
+^Z
+
+hello world
+ cisc3150
+ good bye world
+
+
