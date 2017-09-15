@@ -1,34 +1,41 @@
 class MyString{
     private String string;
+    private char [] characters;
 
     public MyString(char[] chars){
-        string = new String(chars);
-        /* java8api
+        
+        /* java8api     string = new String(chars);
             String(char[] value)
             Allocates a new String so that it represents the sequence of characters currently contained in the character array argument.
         */
-        /*
+
         for(int i = 0; i < chars.length; i++){
-            this.string += chars[1];
+            characters[i] = chars[i];
         }
-        */
+
     }
     public char charAt(int index){
-        
-        if(index < 0 || string.length() < index){
-            throw new IndexOutOfBoundsException("index is out of bounds");
-        }
-        return string.charAt(index);
+        return characters[index];
     }
 
     public int length(){
-        return string.length();
+        return characters.length;
     }
 /*
     public MyString toLowerCase();
     public MyString toUpperCase();
 */
     public boolean equals(MyString s){
+        if(s.length() == characters.length){
+            for(int i = 0; i < characters.length; i++){
+                if(s.charAt(i) != characters[i]){
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+        /*
         if(s.length() == string.length()){
             for(int i = 0; i < s.length(); i++){
                 if(s.charAt(i) != string.charAt(i)){
@@ -38,6 +45,7 @@ class MyString{
             return true;
         }
         return false;
+        */
     }
 
 /*
