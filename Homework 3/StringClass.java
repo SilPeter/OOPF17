@@ -1,6 +1,7 @@
 /*
     String class reimplementation
 */
+import java.util.*;
 
 class MyString{
     // private String string;
@@ -88,12 +89,34 @@ class MyString{
     }
 
     public static MyString valueOf(int i){
+        // turns an integer into MyString
         // http://javadevnotes.com/java-integer-to-string-examples
         // https://stackoverflow.com/questions/4105331/how-do-i-convert-from-int-to-string
-        
-        char[] my_char = new char[10];
-        MyString my_intstr = new MyString(my_char);
+        int numb = i;
+        int int_length = 0;
+        while(numb != 0){
+            numb = numb / 10;
+            int_length++;
+        }
+        numb = i;
+        int[] intarr = new int[int_length];
+        for(int n = 0; n < int_length; n++){ 
+            intarr[n] = numb % 10;
+            numb = numb / 10;
+        }
+        numb = i;    
+        char[] my_char = new char[int_length];        
+        for(int n = 0; n < int_length; n++){
+            // https://www.tutorialspoint.com/java/lang/character_fordigit.htm
+            my_char[n] = Character.forDigit(intarr[n], 10);
+        }
+        for(int n = 0; n < int_length / 2; n++){
+            char temp = my_char[n];
+            my_char[n] = my_char[my_char.length - n - 1];
+            my_char[my_char.length - n - 1] = temp;
+        }
 
+        MyString my_intstr = new MyString(my_char);
         return my_intstr;
     }
 }
@@ -102,6 +125,7 @@ class MyString{
 public class StringClass{
     
     public static void main(String args[]){
+
         char [] charArray = {'h', 'e', 'l', 'l', 'o'};
         char [] charArray_2 = {'c', 'i', 's', 'c', '3', '1', '5', '0'};
         char [] charArray_3 = {'c', 'i', 's', 'c', '3', '1', '5', '0'};
@@ -140,7 +164,8 @@ public class StringClass{
         System.out.println(s1.equals(s2));
         
         // testing int values
-        System.out.println("Testing values: " + s2.valueOf(3));
+        System.out.println("Testing values: " + s1.valueOf(1234567890));
+        
         }
 
 }
