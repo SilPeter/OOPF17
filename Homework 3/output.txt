@@ -1,0 +1,15 @@
+s1 is: hello
+s2 is: cisc3150
+s3 is: cisc3150
+s1 character at position 3 is l
+s2 character at position 3 is c
+Length of s1 is 5
+Length of s1 is 8
+Length of s1 is 8
+hello
+3150
+Upper case HELLO is hello
+Lower case cisc3150 is CISC3150
+true
+false
+Testing values: 1234567890
