@@ -3,6 +3,7 @@ pascal's triangle / pyramid
 */
 import java.util.*;
 public class pascalsTriangle{
+    
     public static void main(String args[]){
         Scanner input = new Scanner(System.in);
         System.out.println("Height of the pyramid? ");

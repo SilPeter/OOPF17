@@ -7,8 +7,9 @@ public class shifting{
         }
 /*
 Bitwise operation
-
+Logical shift
 Arithmetic shift
+/// is logical right shift
 */
         
         

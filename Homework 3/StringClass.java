@@ -156,8 +156,8 @@ public class StringClass{
         System.out.println(s2.substring(4, 8));
 
         // testing upper and lower
-        System.out.println("Upper case " + s4.getMyString() + " is " + s4.toLowerCase());
-        System.out.println("Lower case " + s3.getMyString() + " is " + s3.toUpperCase());
+        System.out.println("Lower case " + s4.getMyString() + " is " + s4.toLowerCase());
+        System.out.println("Upper case " + s3.getMyString() + " is " + s3.toUpperCase());
 
         // testing equals
         System.out.println(s3.equals(s2));
