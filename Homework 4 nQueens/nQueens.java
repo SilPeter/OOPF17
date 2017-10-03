@@ -10,11 +10,11 @@ public class nQueens{
 
         //System.out.println("Row: " + row + "\nColumn: " + size);
 
-        Queens board = new Queens(size);
-        board.hitMe(size, 0);
+        // Queens board = new Queens(size);
+        // board.hitMe(size, 0);
 
-        // QueensBT boardBT = new QueensBT(size);
-        // boardBT.hitMe(size, 0);
+        QueensBT boardBT = new QueensBT(size);
+        boardBT.hitMe(size, 0);
 
 
     }

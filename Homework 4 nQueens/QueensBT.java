@@ -1,9 +1,6 @@
 // backtracking
-
+// http://introcs.cs.princeton.edu/java/23recursion/Queens.java.html
 class QueensBT{
-    // need checker function
-    // need printer function
-    // need queensbt constructor
 
     private int board[];
     private int boardSize; // shares queen, column, and row
@@ -15,6 +12,7 @@ class QueensBT{
     }
 
     private boolean checker(int n){
+        // checker and backtrack from website above
         for(int i = 0; i < n; i++){
             if(board[i] == board[n]){
                 // column checker
