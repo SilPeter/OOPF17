@@ -15,7 +15,7 @@ public class monte_carlo_method{
             x = Math.random() * 5;
             y = Math.random() * 5;
 
-            if(Math.pow(x,2) + Math.pow(y,2) < Math.pow(radius,2)){
+            if(x * x + y * y < radius * radius){
 				dotsInCircle++;
             }
             
