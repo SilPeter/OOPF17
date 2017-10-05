@@ -3,7 +3,7 @@
 public class driver{
     public static void main(String args[]){
         parent james = new parent();
-        // james.printInt();
+        james.printInt();
 
         child jeff = new child();
         jeff.printInt();
