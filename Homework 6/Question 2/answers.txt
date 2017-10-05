@@ -1,0 +1,67 @@
+Instead of picking the letters A, B, C... tell me what is printed on the 
+screen, or which method is being called etc. Make sure your answers are 
+correct. If you're confused, write the program & test it out. 
+
+Format your homework properly so it's easy to read/find your answers for 
+each part.
+
+
+A
+Dog d = new Dog();
+System.out.println(d.call(3));
+
+This prints "woof, woof, woof!" and the method being called is 
+    public String call(int k){...}; in class Dog
+
+B
+Object c = new Cat();
+System.out.println(c);
+
+This prints "I'm a cat go away" and the method being called is  
+    public String toString(){...}; in class Cat
+
+C
+Object v = new Pet();
+System.out.println(v.call());
+// THIS IS WRONG
+This prints "!!!" and the method being called is
+    public String call(){...}; in class Pet
+
+D
+Pet p = new Pet();
+System.out.println(p);
+
+This prints the memory location of the object p.
+
+E
+Pet q = new Dog();
+System.out.println(q.call());
+
+This prints "woof!" and the method being called is
+    public String call(){...}; in class Dog
+
+F
+Cat t = new Cat();
+System.out.println(t.toString("Come here, kitty"));
+
+This prints "Come here, kitty? ... Don't waste my time"; and the method being called is
+    public String toString(String b){...}; in class Cat
+
+G
+Cat u = new Cat();
+System.out.println(u.call(3));
+
+This gives you an error because Cat and Pet doesn't have a method for call that accepts parameters.
+
+H
+Dog e = new Dog();
+System.out.println(e.feet());
+
+This prints "four" and the method being called is
+    public String feet(){...}; in class Pet
+
+I
+Pet r = new Dog();
+System.out.println(r.call(3));
+
+This // I DON'T KNOW 
