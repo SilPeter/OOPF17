@@ -4,7 +4,7 @@ correct. If you're confused, write the program & test it out.
 
 Format your homework properly so it's easy to read/find your answers for 
 each part.
-
+https://www.usna.edu/Users/cs/wcbrown/courses/S11IC211/classes/L12/HW/Homework.html
 
 A
 Dog d = new Dog();
@@ -23,10 +23,8 @@ This prints "I'm a cat go away" and the method being called is
 C
 Object v = new Pet();
 System.out.println(v.call());
-// THIS IS WRONG
-This prints "!!!" and the method being called is
-    public String call(){...}; in class Pet
 
+Object doesn't have a method named call so it'll give an error.
 D
 Pet p = new Pet();
 System.out.println(p);
@@ -64,4 +62,4 @@ I
 Pet r = new Dog();
 System.out.println(r.call(3));
 
-This // I DON'T KNOW 
+Pet doesn't have a call method that accepts parameters so it'll give an error.

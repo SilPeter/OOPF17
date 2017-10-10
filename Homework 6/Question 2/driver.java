@@ -9,8 +9,6 @@ public class driver{
         Object c = new Cat();
         System.out.println(c);
 
-        // Object v = new Pet();
-        // System.out.println(v.call());
 
         Pet p = new Pet();
         System.out.println(p);
@@ -21,11 +19,12 @@ public class driver{
         Cat t = new Cat();
         System.out.println(t.toString("Come here, kitty"));
 
+        
 
         Dog e = new Dog();
         System.out.println(e.feet());
 
-
         System.out.println("Driver ran");
     }
 }
+// https://www.usna.edu/Users/cs/wcbrown/courses/S11IC211/classes/L12/HW/Homework.html

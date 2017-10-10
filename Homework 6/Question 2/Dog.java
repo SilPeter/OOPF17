@@ -2,7 +2,7 @@
 
 public class Dog extends Pet{
     public String call(){
-        return "woof";
+        return "woof!";
     }
 
     public String toString(){
