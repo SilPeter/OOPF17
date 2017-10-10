@@ -6,8 +6,8 @@ class child extends parent{
 
     public void printInt(){
         System.out.print("Inside child: " );
-        System.out.println(childInt);
-        System.out.println(parentInt);
+        System.out.print(childInt + "\t" + parentInt);
+        // prints both the int from child class and parent class
     }
 
 }
