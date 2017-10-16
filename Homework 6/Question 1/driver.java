@@ -6,13 +6,17 @@ packages.
 */
 
 
-public class driver{
+public class driver {
     public static void main(String args[]){
 
-        child jeff = new child();
-        jeff.printInt();
-
-
+        grabber funcgrabber = new grabber();
+        funcgrabber.grab();
     }
 
+}
+
+class grabber extends child{
+    public void grab(){
+        printInt();
+    }
 }
