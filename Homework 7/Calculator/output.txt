@@ -1,0 +1,3 @@
+Assume ] is mult
+
+Answer: 7.0

@@ -6,8 +6,7 @@ import java.io.*;
 public class calculator{
 /*
 https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html#parseDouble-java.lang.String-
-handle exceptions. read https://docs.oracle.com/javase/tutorial/essential/exceptions/
-need to throw exceptions, try and catch blocks
+https://docs.oracle.com/javase/tutorial/essential/exceptions/
 */
     public static void main(String args[]) {
         System.out.println("Assume ] is mult");
@@ -30,6 +29,7 @@ need to throw exceptions, try and catch blocks
 
     public static boolean topChecker(ArrayList<String> input) throws IllegalOperationException{
         // before doing operations on the arraylist, checks for order
+        // expected input should be number, operation, number operation, etc
         // if even index, it should be a number
         // if odd index, it should be an operator
         for(int i = 0; i < input.size(); i+=2){
@@ -52,14 +52,14 @@ need to throw exceptions, try and catch blocks
             } else {
                 throw new IllegalOperationException("Invalid operator");
             }
-
         }
         return true;
     }
     
     
     public static double hitMe(ArrayList<String> input){
-        // this function loops the other help functions to do the operation
+        // this function starts the calculations after being checked by topChecker method
+        // it loops through the ] % and / checks first then checks + - operators
         double merp = 0;
         for(int i = 0; i < input.size(); i++){
             if(multDivChecker(input, i)){
@@ -200,6 +200,10 @@ need to throw exceptions, try and catch blocks
         }
         // return true if openparenthesis and closeparenthesis matches
         return (openP == closeP);
+    }
+
+    public static void parenthesisOp(ArrayList<String> input, int index){
+        // after checking function above for parenthesis, it does the operations inside parenthesis
     }
 
 } // end calculator class
