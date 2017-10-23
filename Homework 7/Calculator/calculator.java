@@ -7,6 +7,14 @@ public class calculator{
 /*
 https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html#parseDouble-java.lang.String-
 https://docs.oracle.com/javase/tutorial/essential/exceptions/
+
+progress 
+parenthesis check
+    roll through arraylist and match ( with ) counters
+    assuming there it is entered properly ( first then )
+parenthesis operation. assuming a single set of parenthesis
+    roll through the arraylist and find indexes for first ( and ) to match
+    pass the indexes to another function to do the operation
 */
     public static void main(String args[]) {
         System.out.println("Assume ] is mult");
@@ -16,10 +24,22 @@ https://docs.oracle.com/javase/tutorial/essential/exceptions/
             top.add(i, args[i]);
             // System.out.print("top[" + i + "]" + top.get(i) + " ");
         }
+        double result = 0;
         try{
-            if(topChecker(top)){
-                double result = hitMe(top);
-                System.out.println("\nAnswer: " + result);
+            if(top.size() == 1){
+                try{    
+                    // handles single input
+                    result = Double.parseDouble(top.get(0));
+                    System.out.println("Answer: " + result);
+                }
+                catch(NumberFormatException e){
+                    System.out.print("Input error");
+                    e.printStackTrace();
+                }
+            } else if(topChecker(top)){
+                // handles input > 1
+                result = hitMe(top);
+                System.out.println("Answer: " + result);
             }
         }
         catch (IllegalOperationException e){
@@ -38,9 +58,9 @@ https://docs.oracle.com/javase/tutorial/essential/exceptions/
                 // this tests for successful parsing which means its a double
                 try{
                     double d = Double.parseDouble(input.get(i));
+                    
                 } 
                 catch(NumberFormatException e){
-                    System.out.println("Invalid number entered");
                     e.printStackTrace();
                     return false;
                 } // end try catch
@@ -48,9 +68,9 @@ https://docs.oracle.com/javase/tutorial/essential/exceptions/
         } // end for
         for(int i = 1; i < input.size(); i+=2){
             // this for loop checks for operators
-            if(i % 2 == 1 && input.get(i).equals("/") || input.get(i).equals("+") || input.get(i).equals("-") || input.get(i).equals("]") || input.get(i).equals("%")){                
+            if(i % 2 == 1 && input.get(i).equals("/") || input.get(i).equals("+") || input.get(i).equals("-") || input.get(i).equals("]") || input.get(i).equals("%")){
             } else {
-                throw new IllegalOperationException("Invalid operator");
+                throw new IllegalOperationException("Illegal operation entered");
             }
         }
         return true;
@@ -91,32 +111,32 @@ https://docs.oracle.com/javase/tutorial/essential/exceptions/
             double right = Double.parseDouble(input.get(index + 1));
             switch(input.get(index)){
                 case "]":
-                return multiply(left, right); 
+                    return left * right;
 
                 case "/":
-                try{
-                    return divide(left, right);
-                } 
-                catch(ArithmeticException e){
-                    System.out.println("Division by zero");
-                    e.printStackTrace();
-                }
+                    try{
+                        return divide(left, right);
+                    } 
+                    catch(ArithmeticException e){
+                        System.out.println("Division by zero");
+                        e.printStackTrace();
+                    }
 
                 case "%":
-                return mod(left, right);
+                    return left % right;
 
                 case "+":
-                return add(left, right);
+                    return left + right;
 
                 case "-":
-                return subtract(left, right);
+                    return left - right;
 
                 default: 
-                System.out.println("wtf went so wrong you got here? _1_");
+                    System.out.println("what went so wrong you got here? _1_");
             }
         } // end if number check method
-
-        System.out.println("wtf went so wrong you got here? _2_");
+        // impossible to get to default and here with all the checks in place beforehand
+        System.out.println("what went so wrong you got here? _2_");
         return -999;
 
     }
@@ -139,7 +159,7 @@ https://docs.oracle.com/javase/tutorial/essential/exceptions/
             r = Double.parseDouble(input.get(index + 1));
         }
         catch (LookAtMrAlgebraOverHereException e){
-            System.out.println("numberCheck");
+            System.out.println("numberCheck"); // this should be unreachable because of checks above preventing errors
             return false;
         }
         return true;
@@ -165,28 +185,16 @@ https://docs.oracle.com/javase/tutorial/essential/exceptions/
     */
     public static double divide(double l, double r) throws ArithmeticException{
         if(r == 0){
-            throw new ArithmeticException();
+            throw new ArithmeticException("Division by zero");
         } else {
             return l / r;
         }
-    }
-    public static double add(double l, double r){
-        return l + r;
-    }
-    public static double subtract(double l, double r){
-        return l - r;
-    }
-    public static double multiply(double l, double r){
-        return l * r;
-    }
-    public static double mod(double l, double r){
-        return l % r;
     }
 
     /*
     parenthesis checking and everything parenthesis here
     */
-    public static boolean parenthesisCheck(ArrayList<String> input, int index){
+    public static boolean parenthesisCheck(ArrayList<String> input){
         // this function checks the amount of parenthesis in the arraylist
         // if they have equal openings and closings it is ok
         int openP = 0; int closeP = 0;
@@ -204,6 +212,27 @@ https://docs.oracle.com/javase/tutorial/essential/exceptions/
 
     public static void parenthesisOp(ArrayList<String> input, int index){
         // after checking function above for parenthesis, it does the operations inside parenthesis
+        int index1 = 0;
+        int index2 = 0;
+        if(!parenthesisCheck(input)){
+            throw new UserIsADumbassException("Parenthesis check failed");
+        }
+        for(int i = 0; i < input.size(); i++){
+            // this loop gets the indexes of the first ( and ) encountered
+            // assume ( and ) are placed properly and no checks are put in
+            if(input.get(i).equals("(")){
+                index1 = i;
+            }
+            if(input.get(i).equals(")")){
+                index2 = i;
+            }
+        }
+        // need to get length between the ( and ) 
+        // pass the length onto operation and make a new argument to accept length
+        for(int i = 0; i < index2; i++){
+            operation(input, index1);
+        }
+        
     }
 
 } // end calculator class
@@ -211,19 +240,17 @@ https://docs.oracle.com/javase/tutorial/essential/exceptions/
 // https://stackoverflow.com/questions/1754315/how-to-create-custom-exceptions-in-java
 // https://docs.oracle.com/javase/tutorial/essential/exceptions/
 class UserIsADumbassException extends IllegalArgumentException{
-    // user enters anything but a number where a number is expected
+    // user forgets to enter a number
     public UserIsADumbassException(String message){
-        System.out.println(message);
+        super(message);
     }
 }
 // https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html#parseDouble-java.lang.String-
 class LookAtMrAlgebraOverHereException extends IllegalArgumentException{
     // user enters anything but a number where a number is suppose to go
-    public LookAtMrAlgebraOverHereException(){
-        
-    }
+
     public LookAtMrAlgebraOverHereException(String message){
-        System.out.println(message);
+        super(message);
         
     }
 }
@@ -231,7 +258,7 @@ class LookAtMrAlgebraOverHereException extends IllegalArgumentException{
 class IllegalOperationException extends IllegalArgumentException{
     // user enters an operation that isn't supported
     public IllegalOperationException(String message){
-        System.out.println(message);
+        super(message);
     }
 }
 
